@@ -19,3 +19,7 @@
 ---
 5. Lalu Setelah Melakukan Proses Sewa Akan Menampilkan Invoice Lalu Dibagikan Ke Calon Penghuni Kost. 
 ####  Status = (Undone)
+
+---
+
+Keseluruhan Project = Belum Selesai
