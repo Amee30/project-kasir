@@ -1,18 +1,12 @@
 package utils;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Library {
-    public Scanner scnn = new Scanner(System.in);
     private final ArrayList<Rooms> roomlist = new ArrayList<>();
     private final ArrayList<Member> memberList = new ArrayList<>();
 
 
-
-    public static void orderRoom(){
-        char isContinue = 'y';
-    }
 
     public Rooms[] getRoomList(){
         Rooms[] roomsArray = new Rooms[this.roomlist.size()];
@@ -48,11 +42,25 @@ public class Library {
             if (member == null) {
                 continue;
             }
-            System.out.println("+==========[User Member]==========+");
-            System.out.printf("|%s %s \n|", member.getId(), member.getUsername());
-            System.out.println("+=================================+");
+            System.out.printf("+==========[User Member Ke %s]==========+\n", member.getId());
+            System.out.printf("|%s |\n", member.getUsername());
+            System.out.println("+======================================+");
         }
     }
+
+    public void showRentedRooms(String memberID){
+        Member member = getMemberByID(memberID);
+        if (member == null) {
+            return;
+        }
+
+        for (Rooms rooms : member.getRentedList()) {
+            System.out.printf("+==========[Nomer Kamar %s]==========+\n", rooms.getId());
+            System.out.printf("|Tipe Kamar : %s |\n", rooms.getroomName());
+            System.out.println("+===================================+");
+        }
+    }
+
 
     public void addRoom(Rooms rooms, boolean duplicateCheck){
         try {
@@ -81,6 +89,9 @@ public class Library {
             if (duplicateCheck) {
                 isIdMembExist(member.getId());
             }
+
+            this.memberList.add(member);
+
         }catch (LibraryException e){
             System.out.println("This Member ID Already Exist");
         }
@@ -93,6 +104,50 @@ public class Library {
                 throw new LibraryException();
             }
         }
+    }
+
+    private Rooms getRoomByID(String id, Rooms[] roomList){
+        for (Rooms rooms : roomList) {
+            if (rooms != null && rooms.getId().equals(id)) {
+            return rooms;
+            }
+        }
+        return null;
+    }
+
+    private Member getMemberByID(String id){
+        for (Member member : this.memberList) {
+            if (member.getId().equals(id)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
+    private int getMemberIndex(Member member){
+        return this.memberList.indexOf(member);
+    }
+
+    public void rentRoom(String roomID, String memberID){
+        Rooms rooms = this.getRoomByID(roomID, getRoomList());
+        this.roomlist.remove(rooms);
+
+        Member member = this.getMemberByID(memberID);
+        int memberIndex = this.getMemberIndex(member);
+        this.memberList.get(memberIndex).completeLease(rooms);
+    }
+
+    public void endRoomRent(String roomID, String memberID){
+        Member member = this.getMemberByID(memberID);
+        int memberIndex = this.getMemberIndex(member);
+
+        if (member == null) {
+            return;
+        }
+
+        Rooms rooms = this.getRoomByID(roomID, member.getRentedList());
+        this.roomlist.add(rooms);
+        this.memberList.get(memberIndex).lease(rooms);
     }
 
 }

@@ -1,9 +1,9 @@
 package utils;
 
 public class Rooms {
-    private String id;
-    private String roomName;
-    private int roomPrice;
+    private final String id;
+    private final String roomName;
+    private final int roomPrice;
 
     public Rooms(String id, String roomName, int roomPrice){
         this.id = id;

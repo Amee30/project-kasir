@@ -17,9 +17,14 @@ public class Main {
             int sel = chooseMenu();
 
             switch (sel) {
-                case 1 -> showRoom();
-                case 2 -> showMember();
-                case 3 -> {
+                case 1 -> exeOrderRoom();
+                case 2 -> exeEndRoomRent();
+                case 3 -> showRoom();
+                case 4 -> showMember();
+                case 5 -> showRentedRoom();
+                case 6 -> addRoom();
+                case 7 -> addUser();
+                case 8 -> {
                     return;
                 }
 
@@ -60,14 +65,21 @@ public class Main {
     public static void showMenu() {
         System.out.println("""
                 +==========[Aplikasi Pemesanan Kamar Kost]==========+
-                |---|                                               |
+                |No |                                               |
+                |---|--------------[Order Zone]---------------------|
                 | 1 | Proses Sewa Kamar                             |
                 | 2 | Proses Selesai Sewa Kamar                     |
+                |---|--------------[Display Zone]-------------------|
                 | 3 | Tampilkan Kamar Kost                          |
                 | 4 | Tampilkan User                                |
                 | 5 | Tampilkan Kamar Kost Yang Sudah Tersewa       |
+                |---|--------------[Adding Zone]--------------------|
                 | 6 | Tambahkan Kamar Kost                          |
                 | 7 | Tambahkan User                                |
+                |---|----------[Delete Zone (Danger!)]--------------|
+                | 8 | Hapus User                                    |
+                | 9 | Hapus Kamar                                   |
+                |---|-----------------------------------------------|
                 | 8 | Exit Program                                  |
                 |---|                                               |
                 +===================================================+
@@ -81,9 +93,100 @@ public class Main {
     public static void showMember(){
         libs.showMember();
     }
+    public static void showRentedRoom(){
+        System.out.println("Masukan ID User : ");
+        String memberID = scan.next();
+
+        libs.showRentedRooms(memberID);
+    }
+
+    public static void exeOrderRoom(){
+        System.out.println("Masukan ID User");
+        String memberID = scan.next();
+
+        showRoom();
+
+        System.out.println("Pilih Nomer Kamar");
+        String roomID =scan.next();
+
+        libs.rentRoom(roomID, memberID);
+    }
+
+    public static void exeEndRoomRent(){
+        System.out.println("Masukan ID User");
+        String memberID = scan.next();
+
+        System.out.println("Masukan Nomer Kamar");
+        String roomID = scan.next();
+
+        libs.endRoomRent(roomID, memberID);
+    }
+
+    public static void addRoom(){
+        String goBack;
+        System.out.println("Masukan Nomer Kamar");
+        String roomID = scan.next();
+
+        System.out.println("Masukan Tipe Kamar Beserta Nomer Kamar dan Lantai Berapa");
+        String roomName = scan.next();
+
+        scan.nextLine();
+
+        System.out.println("Masukan Harga Kamar");
+        int roomPrice = scan.nextInt();
+
+        System.out.println("+==========[Confirmation]==========+");
+        System.out.printf("|Nomer Kamar %s |\n",roomID);
+        System.out.printf("|Tipe Kamar %s |\n",roomName);
+        System.out.printf("|Harga Kamar %s |\n",roomPrice);
+        System.out.println("+==================================+");
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            System.out.println("Berhasil Menambahkan Kamar");
+            libs.addRoom(new Rooms(roomID, roomName, roomPrice), true);
+
+        } else if (goBack.equalsIgnoreCase("n")){
+            addRoom();
+
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali Ke Menu");
+        }
+    }
 
 
+    public static void addUser(){
+        String goBack;
+        System.out.println("Masukan Nomer User");
+        String userID = scan.next();
 
+        System.out.println("Masukan Nama Calon User");
+        String userName = scan.next();
 
+        System.out.println("+==========[Confirmation]==========+");
+        System.out.printf("|Nomer User %s |\n",userID);
+        System.out.printf("|Nama User %s |\n",userName);
+        System.out.println("+==================================+");
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            System.out.println("Berhasil Menambahkan User");
+            libs.addMember(new Member(userID, userName), true);
+
+        } else if (goBack.equalsIgnoreCase("n")){
+            addUser();
+
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali Ke Menu");
+        }
+    }
 
 }
