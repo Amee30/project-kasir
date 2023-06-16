@@ -61,7 +61,6 @@ public class Library {
         }
     }
 
-
     public void addRoom(Rooms rooms, boolean duplicateCheck){
         try {
             if (duplicateCheck){
@@ -89,13 +88,33 @@ public class Library {
             if (duplicateCheck) {
                 isIdMembExist(member.getId());
             }
-
+            System.out.println("Berhasil Menambahkan User");
             this.memberList.add(member);
 
         }catch (LibraryException e){
             System.out.println("This Member ID Already Exist");
         }
 
+    }
+
+    public void remMember(String memberID){
+            Member member = this.getMemberByID(memberID);
+            if (member == null) {
+                System.out.println("This User ID Not Available");
+                return;
+            }
+            System.out.println("Berhasil Menghapus User");
+            this.memberList.remove(member);
+    }
+
+    public void remRoom(String roomID){
+        Rooms rooms = this.getRoomsID(roomID);
+        if (rooms == null) {
+            System.out.println("This User ID Not Available");
+            return;
+        }
+        System.out.println("Berhasil Menghapus Kamar");
+        this.roomlist.remove(rooms);
     }
 
     public void isIdMembExist(String id) throws LibraryException {
@@ -110,6 +129,15 @@ public class Library {
         for (Rooms rooms : roomList) {
             if (rooms != null && rooms.getId().equals(id)) {
             return rooms;
+            }
+        }
+        return null;
+    }
+
+    private Rooms getRoomsID(String id){
+        for (Rooms rooms : this.roomlist){
+            if (rooms.getId().equals(id)) {
+                return rooms;
             }
         }
         return null;
@@ -149,5 +177,4 @@ public class Library {
         this.roomlist.add(rooms);
         this.memberList.get(memberIndex).lease(rooms);
     }
-
 }

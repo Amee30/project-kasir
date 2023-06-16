@@ -1,6 +1,7 @@
 import utils.Library;
 import utils.Member;
 import utils.Rooms;
+
 import java.util.Scanner;
 
 
@@ -24,7 +25,9 @@ public class Main {
                 case 5 -> showRentedRoom();
                 case 6 -> addRoom();
                 case 7 -> addUser();
-                case 8 -> {
+                case 8 -> remMembers();
+                case 9 -> remRoom();
+                case 10 -> {
                     return;
                 }
 
@@ -64,25 +67,25 @@ public class Main {
 
     public static void showMenu() {
         System.out.println("""
-                +==========[Aplikasi Pemesanan Kamar Kost]==========+
-                |No |                                               |
-                |---|--------------[Order Zone]---------------------|
-                | 1 | Proses Sewa Kamar                             |
-                | 2 | Proses Selesai Sewa Kamar                     |
-                |---|--------------[Display Zone]-------------------|
-                | 3 | Tampilkan Kamar Kost                          |
-                | 4 | Tampilkan User                                |
-                | 5 | Tampilkan Kamar Kost Yang Sudah Tersewa       |
-                |---|--------------[Adding Zone]--------------------|
-                | 6 | Tambahkan Kamar Kost                          |
-                | 7 | Tambahkan User                                |
-                |---|----------[Delete Zone (Danger!)]--------------|
-                | 8 | Hapus User                                    |
-                | 9 | Hapus Kamar                                   |
-                |---|-----------------------------------------------|
-                | 8 | Exit Program                                  |
-                |---|                                               |
-                +===================================================+
+                +==========[Program Pemesanan Kamar Kost]============+
+                | No |                                               |
+                |----|--------------[Order Zone]---------------------|
+                | 1  | Proses Sewa Kamar                             |
+                | 2  | Proses Selesai Sewa Kamar                     |
+                |----|--------------[Display Zone]-------------------|
+                | 3  | Tampilkan Kamar Kost                          |
+                | 4  | Tampilkan User                                |
+                | 5  | Tampilkan Kamar Kost Yang Sudah Tersewa       |
+                |----|--------------[Adding Zone]--------------------|
+                | 6  | Tambahkan Kamar Kost                          |
+                | 7  | Tambahkan User                                |
+                |----|----------[Delete Zone (Danger!)]--------------|
+                | 8  | Hapus User                                    |
+                | 9  | Hapus Kamar                                   |
+                |----|-----------------------------------------------|
+                | 10 | Exit Program                                  |
+                |----|                                               |
+                +====================================================+
                 """);
     }
 
@@ -176,7 +179,6 @@ public class Main {
         goBack = scan.next();
 
         if (goBack.equalsIgnoreCase("y")) {
-            System.out.println("Berhasil Menambahkan User");
             libs.addMember(new Member(userID, userName), true);
 
         } else if (goBack.equalsIgnoreCase("n")){
@@ -189,4 +191,63 @@ public class Main {
         }
     }
 
+    public static void remMembers(){
+        try{
+        String goBack;
+        showMember();
+        System.out.println();
+        System.out.println("Masukan ID Member Yang Ingin DiHapus");
+        String memberID = scan.next();
+
+        System.out.printf("Anda Yakin Menghapus User Ke %s ? ", memberID);
+        System.out.println("(Proses Ini Tidak Bisa Dikembalikan/Undo!!!)");
+        System.out.println("Pilih 'y' Untuk Melanjutkan 'n' Untuk Membatalkan, dan Akan Kembali ke Menu");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            libs.remMember(memberID);
+
+        } else if (goBack.equalsIgnoreCase("n")){
+            showMenu();
+
+        } else {
+            System.out.println("Input Salah dan Akan Kembali ke Menu");
+            showMenu();
+        }
+
+        } catch (Exception e){
+            System.out.println("ID Member Not Valid");
+        }
+    }
+
+    public static void remRoom(){
+        try{
+            String goBack;
+            showRoom();
+            System.out.println();
+            System.out.println("Masukan ID Kamar Yang Ingin DiHapus");
+            String roomID = scan.next();
+
+            System.out.printf("Anda Yakin Menghapus Kamar Ke %s ? ", roomID);
+            System.out.println("(Proses Ini Tidak Bisa Dikembalikan/Undo!!!)");
+            System.out.println("Pilih 'y' Untuk Melanjutkan 'n' Untuk Membatalkan, dan Akan Kembali ke Menu");
+            System.out.print("Your Input >> ");
+            goBack = scan.next();
+
+            if (goBack.equalsIgnoreCase("y")) {
+                libs.remRoom(roomID);
+
+            } else if (goBack.equalsIgnoreCase("n")){
+                showMenu();
+
+            } else {
+                System.out.println("Input Salah dan Akan Kembali ke Menu");
+                showMenu();
+            }
+
+        } catch (Exception e){
+            System.out.println("ID Member Not Valid");
+        }
+    }
 }

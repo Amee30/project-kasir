@@ -10,7 +10,7 @@
 
 ---
 3. Pemilik Bisa Menghapus User dan List Kamar
-#### Status = (Undone)
+#### Status = (Completed)
 
 ---
 4. Pemilik Bisa Menampilkan List User Yang Tersedia. 
@@ -31,6 +31,26 @@
 
 ---
 
-Keseluruhan Project = Belum Selesai
+Keseluruhan Project = Hampir Selesai
+
+Materi UAS PBO
+1. Class & Object
+2. Constructor
+3. Access Modifier
+4. Encapsulation
+5. Inheritance
+6. Polimorfisme
+7. Abstraction
+8. ArrayList
+
+Kriteria Penilaian
+- Menerapkan 4 Pilar OOP (80%)
+    - Abstraksi
+    - Enkapsulasi
+    - Inheritance
+    - Polimorfisme
+
+
+- Keseluruhan Source Code (20%)
 
 ### Project UAS Pemrograman Berbasis Object (Java) Dasar Semester 2
