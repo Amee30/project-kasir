@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+
 public class Member extends RentRoom {
 
     private final String id;

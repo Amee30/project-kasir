@@ -5,11 +5,12 @@ import java.util.ArrayList;
 abstract class RentRoom {
     private final ArrayList<Rooms> rentedRoom = new ArrayList<>();
 
-    public void completeLease(Rooms rooms){
+
+    public void lease(Rooms rooms){
         this.rentedRoom.add(rooms);
     }
 
-    public void lease(Rooms rooms){
+    public void completeLease(Rooms rooms){
         this.rentedRoom.remove(rooms);
     }
 
@@ -21,6 +22,7 @@ abstract class RentRoom {
         }
         return rentArray;
     }
+
 
     public void greets(){
     }

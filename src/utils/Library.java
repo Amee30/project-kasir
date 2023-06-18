@@ -6,8 +6,6 @@ public class Library {
     private final ArrayList<Rooms> roomlist = new ArrayList<>();
     private final ArrayList<Member> memberList = new ArrayList<>();
 
-
-
     public Rooms[] getRoomList(){
         Rooms[] roomsArray = new Rooms[this.roomlist.size()];
         int i = 0;
@@ -58,33 +56,6 @@ public class Library {
             System.out.printf("+==========[Nomer Kamar %s]==========+\n", rooms.getId());
             System.out.printf("|Tipe Kamar : %s |\n", rooms.getroomName());
             System.out.println("+===================================+");
-        }
-    }
-
-    public void showRoomsID(String roomID){
-        Rooms rooms = getRoomsID(roomID);
-        if (rooms == null) {
-            return;
-        }
-
-        for (Rooms rooms1 : getRoomList()) {
-            System.out.printf("+==========[Nomer Kamar %s]==========+\n", rooms1.getId());
-            System.out.printf("|Tipe Kamar : %s |\n", rooms1.getroomName());
-            System.out.println("+===================================+");
-        }
-    }
-
-    public void showMemberID(String memberID){
-        Member member = getMemberByID(memberID);
-        if (member == null) {
-            return;
-        }
-
-        int memID = memberList.indexOf(memberID);
-        for (Member member1 : showMemberByID(String.valueOf(memID))) {
-            System.out.println("|==========[Nama User]==========|");
-            System.out.printf("| %s |\n", member1.getUsername());
-            System.out.println("|==============================|");
         }
     }
 
@@ -188,7 +159,7 @@ public class Library {
 
         Member member = this.getMemberByID(memberID);
         int memberIndex = this.getMemberIndex(member);
-        this.memberList.get(memberIndex).completeLease(rooms);
+        this.memberList.get(memberIndex).lease(rooms);
     }
 
     public void endRoomRent(String roomID, String memberID){
@@ -201,17 +172,6 @@ public class Library {
 
         Rooms rooms = this.getRoomByID(roomID, member.getRentedList());
         this.roomlist.add(rooms);
-        this.memberList.get(memberIndex).lease(rooms);
+        this.memberList.get(memberIndex).completeLease(rooms);
     }
-
-    public Member[] showMemberByID(String memberID){
-        Member[] memArray = new Member[memberList.size()];
-        int i = 0;
-        for (Member member : memberList) {
-            memArray[i++] = member;
-        }
-        return memArray;
-    }
-
-
 }

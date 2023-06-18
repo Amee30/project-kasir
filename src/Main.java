@@ -114,8 +114,7 @@ public class Main {
         String roomID =scan.next();
 
         System.out.println("+==========[Confirmation]==========+");
-        libs.showMemberID(memberID);
-        libs.showRoomsID(roomID);
+        // In Progress
         System.out.println("+==================================+");
 
         System.out.println("Apakah Ini Sudah Benar? (y/n)");
