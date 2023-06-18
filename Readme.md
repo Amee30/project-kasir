@@ -21,8 +21,8 @@
 ####  Status = (Completed)
 
 ---
-6. Lalu Setelah Melakukan Proses Sewa Akan Menampilkan Invoice Lalu Dibagikan Ke Calon Penghuni Kost. 
-####  Status = (Half Done)
+6. Lalu Setelah Melakukan Proses Sewa Akan Menampilkan Detail Pemesanan Lalu Dibagikan Ke Calon Penghuni Kost. 
+####  Status = (Half Done, Masih Ngebug)
 
 ---
 
@@ -31,7 +31,7 @@
 
 ---
 
-Keseluruhan Project = Hampir Selesai
+Keseluruhan Project = Selesai, masih dalam perbaikan dengan Detail Pemesanan pada poin no 6
 
 Materi UAS PBO
 1. Class & Object

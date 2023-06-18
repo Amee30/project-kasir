@@ -20,4 +20,10 @@ public class Member extends RentRoom {
         return username;
     }
     // Budhi was here
+
+    @Override
+    public void greets(){
+        System.out.println("Terima Kasih Dan Gunakan Kamar Kost Dengan Bijak");
+    }
+
 }

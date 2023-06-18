@@ -21,4 +21,7 @@ abstract class RentRoom {
         }
         return rentArray;
     }
+
+    public void greets(){
+    }
 }

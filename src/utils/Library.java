@@ -61,6 +61,33 @@ public class Library {
         }
     }
 
+    public void showRoomsID(String roomID){
+        Rooms rooms = getRoomsID(roomID);
+        if (rooms == null) {
+            return;
+        }
+
+        for (Rooms rooms1 : getRoomList()) {
+            System.out.printf("+==========[Nomer Kamar %s]==========+\n", rooms1.getId());
+            System.out.printf("|Tipe Kamar : %s |\n", rooms1.getroomName());
+            System.out.println("+===================================+");
+        }
+    }
+
+    public void showMemberID(String memberID){
+        Member member = getMemberByID(memberID);
+        if (member == null) {
+            return;
+        }
+
+        int memID = memberList.indexOf(memberID);
+        for (Member member1 : showMemberByID(String.valueOf(memID))) {
+            System.out.println("|==========[Nama User]==========|");
+            System.out.printf("| %s |\n", member1.getUsername());
+            System.out.println("|==============================|");
+        }
+    }
+
     public void addRoom(Rooms rooms, boolean duplicateCheck){
         try {
             if (duplicateCheck){
@@ -177,4 +204,15 @@ public class Library {
         this.roomlist.add(rooms);
         this.memberList.get(memberIndex).lease(rooms);
     }
+
+    public Member[] showMemberByID(String memberID){
+        Member[] memArray = new Member[memberList.size()];
+        int i = 0;
+        for (Member member : memberList) {
+            memArray[i++] = member;
+        }
+        return memArray;
+    }
+
+
 }

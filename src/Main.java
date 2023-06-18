@@ -104,6 +104,7 @@ public class Main {
     }
 
     public static void exeOrderRoom(){
+        String goBack;
         System.out.println("Masukan ID User");
         String memberID = scan.next();
 
@@ -112,7 +113,26 @@ public class Main {
         System.out.println("Pilih Nomer Kamar");
         String roomID =scan.next();
 
-        libs.rentRoom(roomID, memberID);
+        System.out.println("+==========[Confirmation]==========+");
+        libs.showMemberID(memberID);
+        libs.showRoomsID(roomID);
+        System.out.println("+==================================+");
+
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            libs.rentRoom(roomID, memberID);
+            Member member = new Member(null, null);
+            member.greets();
+        } else if (goBack.equalsIgnoreCase("n")) {
+            exeOrderRoom();
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali ke Menu");
+        }
     }
 
     public static void exeEndRoomRent(){
