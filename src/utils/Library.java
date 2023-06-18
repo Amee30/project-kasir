@@ -115,7 +115,6 @@ public class Library {
             if (duplicateCheck) {
                 isIdMembExist(member.getId());
             }
-            System.out.println("Berhasil Menambahkan User");
             this.memberList.add(member);
 
         }catch (LibraryException e){

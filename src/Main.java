@@ -200,7 +200,7 @@ public class Main {
 
         if (goBack.equalsIgnoreCase("y")) {
             libs.addMember(new Member(userID, userName), true);
-
+            System.out.println("Berhasil Menambahkan User");
         } else if (goBack.equalsIgnoreCase("n")){
             addUser();
 
