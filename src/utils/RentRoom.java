@@ -5,7 +5,6 @@ import java.util.ArrayList;
 abstract class RentRoom {
     private final ArrayList<Rooms> rentedRoom = new ArrayList<>();
 
-
     public void lease(Rooms rooms){
         this.rentedRoom.add(rooms);
     }
@@ -22,7 +21,6 @@ abstract class RentRoom {
         }
         return rentArray;
     }
-
 
     public void greets(){
     }

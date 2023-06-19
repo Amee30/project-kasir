@@ -114,8 +114,8 @@ public class Main {
         int roomID =scan.nextInt();
 
         System.out.println("+==========[Confirmation]==========+");
-        System.out.printf("User ID Ke : %s\n", memberID);
-        System.out.printf("Kamar Ke : %s\n",roomID);
+        libs.showMemberByID(memberID);
+        libs.showRoomsByID(roomID);
         System.out.println("+==================================+");
 
         System.out.println("Apakah Ini Sudah Benar? (y/n)");
@@ -125,8 +125,7 @@ public class Main {
         if (goBack.equalsIgnoreCase("y")) {
             libs.rentRoom(roomID, memberID);
 
-            Member member = new Member(0,null);
-            member.greets();
+            libs.orderInvoice(memberID, roomID);
         } else if (goBack.equalsIgnoreCase("n")) {
             exeOrderRoom();
         } else {
@@ -137,13 +136,27 @@ public class Main {
     }
 
     public static void exeEndRoomRent(){
+        String goBack;
         System.out.println("Masukan ID User");
         int memberID = scan.nextInt();
 
         System.out.println("Masukan Nomer Kamar");
         int roomID = scan.nextInt();
 
-        libs.endRoomRent(roomID, memberID);
+        System.out.println("+==========[Confirmation]==========+");
+        libs.showMemberByID(memberID);
+        libs.showRentedRooms(memberID);
+
+
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            libs.endRoomRent(roomID, memberID);
+        } else if (goBack.equalsIgnoreCase("n")) {
+            showMenu();
+        }
     }
 
     public static void addRoom(){

@@ -15,6 +15,7 @@ public class Kost {
         return roomsArray;
     }
 
+
     public void showRooms(){
         for (Rooms rooms : getRoomList()) {
             if (rooms == null) {
@@ -24,6 +25,13 @@ public class Kost {
             System.out.printf("|Tipe Kamar  : %s |\n|Harga : Rp%d/Bulan |\n", rooms.getroomName(), rooms.getRoomPrice());
             System.out.println("+=====================================+");
         }
+    }
+
+    public void showRoomsByID(int roomID){
+         Rooms rooms = this.roomlist.get(roomID -1);
+
+            System.out.printf("+==========[List Kamar Ke %s]==========+\n", rooms.getId());
+            System.out.printf("|Tipe Kamar  : %s |\n|Harga : Rp%d/Bulan |\n", rooms.getroomName(), rooms.getRoomPrice());
     }
 
     public Member[] getMemberList(){
@@ -44,6 +52,13 @@ public class Kost {
             System.out.printf("|%s |\n", member.getUsername());
             System.out.println("+======================================+");
         }
+    }
+
+    public void showMemberByID(int memberID){
+        Member member = this.memberList.get(memberID -1);
+
+            System.out.printf("+==========[User Member Ke %s]==========+\n", member.getId());
+            System.out.printf("|%s |\n", member.getUsername());
     }
 
     public void showRentedRooms(int memberID){
@@ -173,5 +188,18 @@ public class Kost {
         Rooms rooms = this.getRoomByID(roomID, member.getRentedList());
         this.roomlist.add(rooms);
         this.memberList.get(memberIndex).completeLease(rooms);
+    }
+
+    public void orderInvoice(int memberID, int roomID){
+            Member member = this.memberList.get(memberID -1);
+            Rooms rooms = this.roomlist.get(roomID -1);
+
+            System.out.println("+=================[Invoice]===================+");
+            System.out.printf("|Nama User  : %s |\n", member.getUsername());
+            System.out.printf("|Tipe Kamar  : %s |\n", rooms.getroomName());
+            System.out.printf("|Harga Yang Harus Dibayarkan  : %s |\n", rooms.getRoomPrice());
+            System.out.println("Silahkan Berikan Invoice ini ke Pengurus Kos Beserta Bukti Pembayaran");
+            member.greets();
+            System.out.println("+===============[Terima Kasih]================+");
     }
 }

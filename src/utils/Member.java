@@ -24,7 +24,8 @@ public class Member extends RentRoom {
 
     @Override
     public void greets(){
-        System.out.println("Berhasil Menyewa Kamar dan Suruh Pengguna Kost Untuk Gunakan Kamar Kost Dengan Bijak");
+        System.out.println("Terima Kasih dan Tolong Untuk Pengguna Kost" +
+                " Yth Untuk Menggunakan Kamar Kost Dengan Bijak");
     }
 
 }
