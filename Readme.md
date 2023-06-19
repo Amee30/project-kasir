@@ -54,17 +54,17 @@ Kriteria Penilaian
 - Keseluruhan Source Code (20%)
 
 ### Preview
-Preview Menu
-![Tampilan Menu](image preview/menu.png)
+##### Preview Menu
+![Tampilan Menu](https://github.com/Amee30/project-program-pemesanan-kamar-kost/blob/master/image%20preview/menu.png)
 
-Preview List Kamar
-![Tampilan List Kamar](image preview/menu tampil kamar.png)
+##### Preview List Kamar
+![Tampilan List Kamar](https://github.com/Amee30/project-program-pemesanan-kamar-kost/blob/master/image%20preview/menu%20tampil%20kamar.png)
 
-Preview List User
-![Tampilan List User](image preview/menu tampil user.png)
+##### Preview List User
+![Tampilan List User](https://github.com/Amee30/project-program-pemesanan-kamar-kost/blob/master/image%20preview/menu%20tampil%20user.png)
 
-Preview Order Confirmation dan Invoice
-![Tampilan Order](image preview/order.png)
+##### Preview Order Confirmation dan Invoice
+![Tampilan Order](https://github.com/Amee30/project-program-pemesanan-kamar-kost/blob/master/image%20preview/order.png)
 
 ---
 
