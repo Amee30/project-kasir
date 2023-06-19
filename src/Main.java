@@ -42,20 +42,20 @@ public class Main {
 
     public static void initLibraryData(){
         //Room List
-        libs.addRoom(new Rooms("1", "Kamar Kost Luas (BerAC) No 1 LT 1", 1200000), true);
-        libs.addRoom(new Rooms("2", "Kamar Kost Luas (Tidak BerAC) No 2 LT 1", 950000), true);
-        libs.addRoom(new Rooms("3", "Kamar Kost Standar No 3 LT 1", 750000), true);
-        libs.addRoom(new Rooms("4", "Kamar Kost Standar No 4 LT 2", 750000), true);
-        libs.addRoom(new Rooms("5", "Kamar Kost Standar No 5 LT 2", 750000), true);
-        libs.addRoom(new Rooms("6", "Kamar Kost Standar No 6 LT 2", 750000), true);
-        libs.addRoom(new Rooms("7", "Kamar Kost Standar No 7 LT 2", 750000), true);
+        libs.addRoom(new Rooms(1, "Kamar Kost Luas (BerAC) No 1 LT 1", 1200000), true);
+        libs.addRoom(new Rooms(2, "Kamar Kost Luas (Tidak BerAC) No 2 LT 1", 950000), true);
+        libs.addRoom(new Rooms(3, "Kamar Kost Standar No 3 LT 1", 750000), true);
+        libs.addRoom(new Rooms(4, "Kamar Kost Standar No 4 LT 2", 750000), true);
+        libs.addRoom(new Rooms(5, "Kamar Kost Standar No 5 LT 2", 750000), true);
+        libs.addRoom(new Rooms(6, "Kamar Kost Standar No 6 LT 2", 750000), true);
+        libs.addRoom(new Rooms(7, "Kamar Kost Standar No 7 LT 2", 750000), true);
 
         //User List
-        libs.addMember(new Member("1", "Ketut Garing"), true);
-        libs.addMember(new Member("2", "Kadek Jax"), true);
-        libs.addMember(new Member("3", "Rahmad Aditya Alfonzo"), true);
-        libs.addMember(new Member("4", "Muhammad Dicky Aprilianto"), true);
-        libs.addMember(new Member("5", "Made Terminal Kuningan"), true);
+        libs.addMember(new Member(1, "Ketut Garing"), true);
+        libs.addMember(new Member(2, "Kadek Jax"), true);
+        libs.addMember(new Member(3, "Rahmad Aditya Alfonzo"), true);
+        libs.addMember(new Member(4, "Muhammad Dicky Aprilianto"), true);
+        libs.addMember(new Member(5, "Made Terminal Kuningan"), true);
     }
 
     public static int chooseMenu(){
@@ -98,7 +98,7 @@ public class Main {
     }
     public static void showRentedRoom(){
         System.out.println("Masukan ID User : ");
-        String memberID = scan.next();
+        int memberID = scan.nextInt();
 
         libs.showRentedRooms(memberID);
     }
@@ -106,12 +106,12 @@ public class Main {
     public static void exeOrderRoom(){
         String goBack;
         System.out.println("Masukan ID User");
-        String memberID = scan.next();
+        int memberID = scan.nextInt();
 
         showRoom();
 
         System.out.println("Pilih Nomer Kamar");
-        String roomID =scan.next();
+        int roomID =scan.nextInt();
 
         System.out.println("+==========[Confirmation]==========+");
         System.out.printf("User ID Ke : %s\n", memberID);
@@ -124,7 +124,8 @@ public class Main {
 
         if (goBack.equalsIgnoreCase("y")) {
             libs.rentRoom(roomID, memberID);
-            Member member = new Member(null, null);
+
+            Member member = new Member(0,null);
             member.greets();
         } else if (goBack.equalsIgnoreCase("n")) {
             exeOrderRoom();
@@ -137,10 +138,10 @@ public class Main {
 
     public static void exeEndRoomRent(){
         System.out.println("Masukan ID User");
-        String memberID = scan.next();
+        int memberID = scan.nextInt();
 
         System.out.println("Masukan Nomer Kamar");
-        String roomID = scan.next();
+        int roomID = scan.nextInt();
 
         libs.endRoomRent(roomID, memberID);
     }
@@ -148,12 +149,12 @@ public class Main {
     public static void addRoom(){
         String goBack;
         System.out.println("Masukan Nomer Kamar");
-        String roomID = scan.next();
-
-        System.out.println("Masukan Tipe Kamar Beserta Nomer Kamar dan Lantai Berapa");
-        String roomName = scan.next();
+        int roomID = scan.nextInt();
 
         scan.nextLine();
+
+        System.out.println("Masukan Tipe Kamar Beserta Nomer Kamar dan Lantai Berapa");
+        String roomName = scan.nextLine();
 
         System.out.println("Masukan Harga Kamar");
         int roomPrice = scan.nextInt();
@@ -185,7 +186,7 @@ public class Main {
     public static void addUser(){
         String goBack;
         System.out.println("Masukan Nomer User");
-        String userID = scan.next();
+        int userID = scan.nextInt();
 
         System.out.println("Masukan Nama Calon User");
         String userName = scan.next();
@@ -217,7 +218,7 @@ public class Main {
         showMember();
         System.out.println();
         System.out.println("Masukan ID Member Yang Ingin DiHapus");
-        String memberID = scan.next();
+        int memberID = scan.nextInt();
 
         System.out.printf("Anda Yakin Menghapus User Ke %s ? ", memberID);
         System.out.println("(Proses Ini Tidak Bisa Dikembalikan/Undo!!!)");
@@ -247,7 +248,7 @@ public class Main {
             showRoom();
             System.out.println();
             System.out.println("Masukan ID Kamar Yang Ingin DiHapus");
-            String roomID = scan.next();
+            int roomID = scan.nextInt();
 
             System.out.printf("Anda Yakin Menghapus Kamar Ke %s ? ", roomID);
             System.out.println("(Proses Ini Tidak Bisa Dikembalikan/Undo!!!)");

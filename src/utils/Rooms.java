@@ -1,17 +1,17 @@
 package utils;
 
 public class Rooms {
-    private final String id;
+    private final int id;
     private final String roomName;
     private final int roomPrice;
 
-    public Rooms(String id, String roomName, int roomPrice){
+    public Rooms(int id, String roomName, int roomPrice){
         this.id = id;
         this.roomName = roomName;
         this.roomPrice = roomPrice;
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 

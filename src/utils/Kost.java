@@ -46,7 +46,7 @@ public class Kost {
         }
     }
 
-    public void showRentedRooms(String memberID){
+    public void showRentedRooms(int memberID){
         Member member = getMemberByID(memberID);
         if (member == null) {
             return;
@@ -72,9 +72,9 @@ public class Kost {
         }
     }
 
-    public void isIdRoomExist(String id) throws LibraryException {
+    public void isIdRoomExist(int id) throws LibraryException {
         for (Rooms rooms : this.roomlist) {
-            if (rooms.getId().equals(id)) {
+            if (rooms.getId() == id) {
                 throw new LibraryException();
             }
 
@@ -94,7 +94,7 @@ public class Kost {
 
     }
 
-    public void remMember(String memberID){
+    public void remMember(int memberID){
             Member member = this.getMemberByID(memberID);
             if (member == null) {
                 System.out.println("This User ID Not Available");
@@ -104,7 +104,7 @@ public class Kost {
             this.memberList.remove(member);
     }
 
-    public void remRoom(String roomID){
+    public void remRoom(int roomID){
         Rooms rooms = this.getRoomsID(roomID);
         if (rooms == null) {
             System.out.println("This User ID Not Available");
@@ -114,35 +114,35 @@ public class Kost {
         this.roomlist.remove(rooms);
     }
 
-    public void isIdMembExist(String id) throws LibraryException {
+    public void isIdMembExist(int id) throws LibraryException {
         for (Member member : this.memberList) {
-            if (member.getId().equals(id)) {
+            if (member.getId() == id) {
                 throw new LibraryException();
             }
         }
     }
 
-    private Rooms getRoomByID(String id, Rooms[] roomList){
+    private Rooms getRoomByID(int id, Rooms[] roomList){
         for (Rooms rooms : roomList) {
-            if (rooms != null && rooms.getId().equals(id)) {
+            if (rooms != null && rooms.getId() == id) {
             return rooms;
             }
         }
         return null;
     }
 
-    private Rooms getRoomsID(String id){
+    private Rooms getRoomsID(int id){
         for (Rooms rooms : this.roomlist){
-            if (rooms.getId().equals(id)) {
+            if (rooms.getId() == id) {
                 return rooms;
             }
         }
         return null;
     }
 
-    private Member getMemberByID(String id){
+    private Member getMemberByID(int id){
         for (Member member : this.memberList) {
-            if (member.getId().equals(id)) {
+            if (member.getId() == id) {
                 return member;
             }
         }
@@ -153,7 +153,7 @@ public class Kost {
         return this.memberList.indexOf(member);
     }
 
-    public void rentRoom(String roomID, String memberID){
+    public void rentRoom(int roomID, int memberID){
         Rooms rooms = this.getRoomByID(roomID, getRoomList());
         this.roomlist.remove(rooms);
 
@@ -162,7 +162,7 @@ public class Kost {
         this.memberList.get(memberIndex).lease(rooms);
     }
 
-    public void endRoomRent(String roomID, String memberID){
+    public void endRoomRent(int roomID, int memberID){
         Member member = this.getMemberByID(memberID);
         int memberIndex = this.getMemberIndex(member);
 
