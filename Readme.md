@@ -53,4 +53,20 @@ Kriteria Penilaian
 
 - Keseluruhan Source Code (20%)
 
+### Preview
+Preview Menu
+![Tampilan Menu](image preview/menu.png)
+
+Preview List Kamar
+![Tampilan List Kamar](image preview/menu tampil kamar.png)
+
+Preview List User
+![Tampilan List User](image preview/menu tampil user.png)
+
+Preview Order Confirmation dan Invoice
+![Tampilan Order](image preview/order.png)
+
+---
+
 ### Project UAS Pemrograman Berbasis Object (Java) Dasar Semester 2
+###### Dibuat Menggunakan Jetbrain IDE (IntelliJ Idea)
