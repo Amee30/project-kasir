@@ -21,8 +21,8 @@
 ####  Status = (Completed)
 
 ---
-6. Lalu Setelah Melakukan Proses Sewa Akan Menampilkan Detail Pemesanan Lalu Dibagikan Ke Calon Penghuni Kost. 
-####  Status = (Half Done, Masih Ngebug)
+6. Terdapat Sebuah Fail Safe Pada Saat Proses Pemesanan Kamar,Menambahkan Kamar dan User Kost, dan Menghapus User Kost dan kamar. 
+####  Status = (Completed)
 
 ---
 
@@ -31,7 +31,7 @@
 
 ---
 
-Keseluruhan Project = Selesai, masih dalam perbaikan dengan Detail Pemesanan pada poin no 6
+Keseluruhan Project = Selesai, Mungkin masih ada bug yang saya tidak tau
 
 Materi UAS PBO
 1. Class & Object

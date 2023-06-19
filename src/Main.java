@@ -1,4 +1,4 @@
-import utils.Library;
+import utils.Kost;
 import utils.Member;
 import utils.Rooms;
 
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
 
     public static Scanner scan = new Scanner(System.in);
-    static Library libs = new Library();
+    static Kost libs = new Kost();
     public static void main(String[] args) {
         String goBack = "y";
         initLibraryData();
@@ -114,7 +114,8 @@ public class Main {
         String roomID =scan.next();
 
         System.out.println("+==========[Confirmation]==========+");
-        // In Progress
+        System.out.printf("User ID Ke : %s\n", memberID);
+        System.out.printf("Kamar Ke : %s\n",roomID);
         System.out.println("+==================================+");
 
         System.out.println("Apakah Ini Sudah Benar? (y/n)");

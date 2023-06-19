@@ -2,7 +2,7 @@ package utils;
 
 import java.util.ArrayList;
 
-public class Library {
+public class Kost {
     private final ArrayList<Rooms> roomlist = new ArrayList<>();
     private final ArrayList<Member> memberList = new ArrayList<>();
 
