@@ -5,7 +5,7 @@ public class Member extends RentRoom {
 
     private int id;
     private String username;
-    private int noTelp;
+    private long noTelp;
 
 
     public Member(int id, String username){
@@ -14,7 +14,7 @@ public class Member extends RentRoom {
 
     }
     // Constructor Overloading
-    public Member(int noTelp){
+    public Member(long noTelp){
         this.noTelp = noTelp;
 
     }
@@ -26,9 +26,8 @@ public class Member extends RentRoom {
     public String getUsername(){
         return username;
     }
-    // Budhi was here
 
-    public int getNoTelp(){
+    public long getNoTelp(){
         return noTelp;
     }
     @Override

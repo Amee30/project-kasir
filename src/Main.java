@@ -51,7 +51,7 @@ public class Main {
 
         //User List
         libs.addMember(new Member(1, "Ketut Garing"), true);
-        libs.addMember(new Member(2, "Kadek Jax"), true);
+        libs.addMember(new Member(2, "Muhammad Jax"), true);
         libs.addMember(new Member(3, "Rahmad Aditya Alfonzo"), true);
         libs.addMember(new Member(4, "Muhammad Dicky Aprilianto"), true);
         libs.addMember(new Member(5, "Made Terminal Kuningan"), true);
@@ -113,7 +113,9 @@ public class Main {
         int roomID = scan.nextInt();
 
         System.out.println("Masukan No Telp");
-        int noTelp = scan.nextInt();
+        long noTelp = scan.nextLong();
+
+        scan.nextLine();
 
         System.out.println("+==========[Confirmation]==========+");
         libs.showMemberByID(memberID);
@@ -125,11 +127,12 @@ public class Main {
         goBack = scan.next();
 
         if (goBack.equalsIgnoreCase("y")) {
+            libs.orderInvoice(memberID, roomID, noTelp);
             libs.rentRoom(roomID, memberID);
 
-            libs.orderInvoice(memberID, roomID, noTelp);
         } else if (goBack.equalsIgnoreCase("n")) {
             exeOrderRoom();
+
         } else {
             System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
                     "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
