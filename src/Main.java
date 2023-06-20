@@ -11,7 +11,7 @@ public class Main {
     static Kost libs = new Kost();
     public static void main(String[] args) {
         String goBack = "y";
-        initLibraryData();
+        initKostData();
 
         while (goBack.equalsIgnoreCase("y")){
             showMenu();
@@ -37,10 +37,9 @@ public class Main {
             System.out.print("Your Input >> ");
             goBack = scan.next();
         }
-
     }
 
-    public static void initLibraryData(){
+    public static void initKostData(){
         //Room List
         libs.addRoom(new Rooms(1, "Kamar Kost Luas (BerAC) No 1 LT 1", 1200000), true);
         libs.addRoom(new Rooms(2, "Kamar Kost Luas (Tidak BerAC) No 2 LT 1", 950000), true);
@@ -111,7 +110,10 @@ public class Main {
         showRoom();
 
         System.out.println("Pilih Nomer Kamar");
-        int roomID =scan.nextInt();
+        int roomID = scan.nextInt();
+
+        System.out.println("Masukan No Telp");
+        int noTelp = scan.nextInt();
 
         System.out.println("+==========[Confirmation]==========+");
         libs.showMemberByID(memberID);
@@ -125,7 +127,7 @@ public class Main {
         if (goBack.equalsIgnoreCase("y")) {
             libs.rentRoom(roomID, memberID);
 
-            libs.orderInvoice(memberID, roomID);
+            libs.orderInvoice(memberID, roomID, noTelp);
         } else if (goBack.equalsIgnoreCase("n")) {
             exeOrderRoom();
         } else {

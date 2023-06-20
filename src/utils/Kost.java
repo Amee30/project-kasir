@@ -190,15 +190,18 @@ public class Kost {
         this.memberList.get(memberIndex).completeLease(rooms);
     }
 
-    public void orderInvoice(int memberID, int roomID){
+
+    public void orderInvoice(int memberID, int roomID, int noTelp){
             Member member = this.memberList.get(memberID -1);
+            Member member2 = new Member(noTelp);
             Rooms rooms = this.roomlist.get(roomID -1);
 
             System.out.println("+=================[Invoice]===================+");
             System.out.printf("|Nama User  : %s |\n", member.getUsername());
+            System.out.printf("|No Telp User  : +62%s |\n", member2.getNoTelp());
             System.out.printf("|Tipe Kamar  : %s |\n", rooms.getroomName());
             System.out.printf("|Harga Yang Harus Dibayarkan  : %s |\n", rooms.getRoomPrice());
-            System.out.println("Silahkan Berikan Invoice ini ke Pengurus Kos Beserta Bukti Pembayaran");
+            System.out.println("|Silahkan Berikan Invoice ini ke Pengurus Kos Beserta Bukti Pembayaran|");
             member.greets();
             System.out.println("+===============[Terima Kasih]================+");
     }
