@@ -1,13 +1,25 @@
 package utils;
 
 public class Rooms {
-    private final int id;
-    private final String roomName;
-    private final int roomPrice;
+    private int id;
+    private String roomName;
+    private int roomPrice;
 
     public Rooms(int id, String roomName, int roomPrice){
         this.id = id;
         this.roomName = roomName;
+        this.roomPrice = roomPrice;
+    }
+
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public void setRoomName(String roomName){
+        this.roomName = roomName;
+    }
+
+    public void setRoomPrice(int roomPrice){
         this.roomPrice = roomPrice;
     }
 

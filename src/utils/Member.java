@@ -13,10 +13,18 @@ public class Member extends RentRoom {
         this.username = username;
 
     }
-    // Constructor Overloading
+    // Constructor Overloading!
     public Member(long noTelp){
         this.noTelp = noTelp;
 
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public int getId(){
@@ -35,5 +43,4 @@ public class Member extends RentRoom {
         System.out.println("|Terima Kasih dan Tolong Untuk Pengguna Kost" +
                 " Yth Untuk Menggunakan Kamar Kost Dengan Bijak|");
     }
-
 }

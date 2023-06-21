@@ -27,7 +27,9 @@ public class Main {
                 case 7 -> addUser();
                 case 8 -> remMembers();
                 case 9 -> remRoom();
-                case 10 -> {
+                case 10 -> editRoom();
+                case 11 -> editMember();
+                case 12 -> {
                     return;
                 }
 
@@ -55,6 +57,7 @@ public class Main {
         libs.addMember(new Member(3, "Rahmad Aditya Alfonzo"), true);
         libs.addMember(new Member(4, "Muhammad Dicky Aprilianto"), true);
         libs.addMember(new Member(5, "Made Terminal Kuningan"), true);
+
     }
 
     public static int chooseMenu(){
@@ -81,8 +84,11 @@ public class Main {
                 |----|----------[Delete Zone (Danger!)]--------------|
                 | 8  | Hapus User                                    |
                 | 9  | Hapus Kamar                                   |
+                |----|---------------[Edit Zone]---------------------|
+                | 10 | Edit Kamar                                    |
+                | 11 | Edit User                                     |
                 |----|-----------------------------------------------|
-                | 10 | Exit Program                                  |
+                | 12 | Exit Program                                  |
                 |----|                                               |
                 +====================================================+
                 """);
@@ -159,9 +165,16 @@ public class Main {
 
         if (goBack.equalsIgnoreCase("y")) {
             libs.endRoomRent(roomID, memberID);
+
         } else if (goBack.equalsIgnoreCase("n")) {
             showMenu();
+
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali ke Menu");
         }
+
     }
 
     public static void addRoom(){
@@ -220,6 +233,7 @@ public class Main {
         if (goBack.equalsIgnoreCase("y")) {
             libs.addMember(new Member(userID, userName), true);
             System.out.println("Berhasil Menambahkan User");
+
         } else if (goBack.equalsIgnoreCase("n")){
             addUser();
 
@@ -287,6 +301,91 @@ public class Main {
 
         } catch (Exception e){
             System.out.println("ID Member Not Valid");
+        }
+    }
+
+    public static void editRoom(){
+        String goBack;
+        showRoom();
+        System.out.println("Masukan ID Yang Ingin Di Edit");
+        int roomID = scan.nextInt();
+
+        System.out.println("Masukan ID Baru/ID Yang Sama");
+        int newID = scan.nextInt();
+
+        scan.nextLine();
+
+        System.out.println("Masukan Nama Kamar");
+        String roomName = scan.nextLine();
+
+        System.out.println("Masukan Harga Kamar");
+        int roomPrice = scan.nextInt();
+
+        System.out.println("+==========[Confirmation]==========+");
+        System.out.println("Sebelum");
+        libs.showRoomsByID(roomID);
+        System.out.println();
+
+        System.out.println("Sesudah");
+        System.out.printf("+==========[List Kamar Ke %s]==========+\n", newID);
+        System.out.printf("|Tipe Kamar  : %s |\n|Harga : Rp%d/Bulan |\n", roomName, roomPrice);
+        System.out.println("+=====================================+");
+
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            libs.editRoom(roomID ,newID ,roomName, roomPrice);
+
+        } else if (goBack.equalsIgnoreCase("n")) {
+            editRoom();
+
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali ke Menu");
+        }
+    }
+
+    public static void editMember(){
+        String goBack;
+        showMember();
+        System.out.println("Masukan ID Yang Ingin Di Edit");
+        int roomID = scan.nextInt();
+
+        System.out.println("Masukan ID Baru/ID Yang Sama");
+        int newID = scan.nextInt();
+
+        scan.nextLine();
+
+        System.out.println("Masukan Nama Member");
+        String userName = scan.nextLine();
+
+        System.out.println("+==========[Confirmation]==========+");
+        System.out.println("Sebelum");
+        libs.showMemberByID(roomID);
+        System.out.println("+======================================+");
+        System.out.println();
+        System.out.println("Sesudah");
+        System.out.printf("+==========[User Member Ke %s]==========+\n", newID);
+        System.out.printf("|%s |\n", userName);
+        System.out.println("+======================================+");
+
+        System.out.println("Apakah Ini Sudah Benar? (y/n)");
+        System.out.print("Your Input >> ");
+        goBack = scan.next();
+
+        if (goBack.equalsIgnoreCase("y")) {
+            libs.editMember(roomID, newID, userName);
+
+        } else if (goBack.equalsIgnoreCase("n")) {
+            editMember();
+
+        } else {
+            System.out.println("Tolong Masukan Input Berupa (y/n) Y berarti " +
+                    "Akan Melakukan Proses Tambah User, N Berarti Akan Mengulang Proses Input" +
+                    ", dan Selain Dari Itu Akan Melakukan Proses Kembali ke Menu");
         }
     }
 }

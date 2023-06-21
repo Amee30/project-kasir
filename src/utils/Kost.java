@@ -205,4 +205,19 @@ public class Kost {
             member.greets();
             System.out.println("+===============[Terima Kasih]================+");
     }
+
+    public void editRoom(int roomID, int newID, String roomName, int roomPrice){
+        Rooms rooms = roomlist.get(roomID -1);
+        rooms.setID(newID);
+        rooms.setRoomName(roomName);
+        rooms.setRoomPrice(roomPrice);
+        roomlist.set(roomID-1, rooms);
+    }
+
+    public void editMember(int memberID, int newID, String userName){
+        Member member = memberList.get(memberID-1);
+        member.setId(newID);
+        member.setUsername(userName);
+        memberList.set(memberID-1, member);
+    }
 }
